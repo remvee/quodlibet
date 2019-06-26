@@ -206,6 +206,15 @@ class Notebook(Gtk.Notebook):
         super(Notebook, self).append_page(page, label)
 
 
+class ConfigLabel(Gtk.Label):
+    """Customised Label for configuration, tied to a widget"""
+
+    def __init__(self, text, widget):
+        super(Gtk.Label, self).__init__(label=text, use_underline=True)
+        self.set_mnemonic_widget(widget)
+        self.set_alignment(0.0, 0.5)
+
+
 def Frame(label, child=None):
     """A Gtk.Frame with no shadow, 12px left padding, and 6px top padding."""
     frame = Gtk.Frame()

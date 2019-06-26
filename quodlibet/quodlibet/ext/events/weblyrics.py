@@ -30,16 +30,15 @@ from gi.repository import WebKit2, Gtk, GLib
 
 from quodlibet import qltk
 from quodlibet.util import escape, cached_property, connect_obj
-from quodlibet.qltk import Icons, Align
+from quodlibet.qltk import Icons, Align, ConfigLabel
 from quodlibet.qltk.entry import UndoEntry
 from quodlibet.pattern import URLFromPattern
 from quodlibet.util.urllib import urlopen
 
-
 # for the mobile version
 USER_AGENT = ("Mozilla/5.0 (Linux; Android 5.1.1; Nexus 5 Build/LMY48B; wv) "
-             "AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0"
-             "Chrome/43.0.2357.65 Mobile Safari/537.36")
+              "AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0"
+              "Chrome/43.0.2357.65 Mobile Safari/537.36")
 LYRICS_WIKIA_URL = ("https://lyrics.wikia.com/api.php?client=QuodLibet"
                     "&action=lyrics&func=getSong&artist=%s&song=%s&fmt=xml")
 DEFAULT_ALTERNATE_SEARCH_URL = ("https://duckduckgo.com/"
@@ -217,7 +216,6 @@ class LyricsWebView(Gtk.ScrolledWindow):
 
 def get_config(prefix):
     class LyricsWindowConfig(object):
-
         plugin_conf = PluginConfig(prefix)
 
         alternate_search_url = ConfProp(plugin_conf, "alternate_search_url",
@@ -227,15 +225,6 @@ def get_config(prefix):
         zoom_level = FloatConfProp(plugin_conf, "zoom_level", 1.4)
 
     return LyricsWindowConfig()
-
-
-class ConfigLabel(Gtk.Label):
-    """Customised Label for configuration, tied to a widget"""
-
-    def __init__(self, text, widget):
-        super(Gtk.Label, self).__init__(label=text, use_underline=True)
-        self.set_mnemonic_widget(widget)
-        self.set_alignment(0.0, 0.5)
 
 
 class LyricsWindowPrefs(Gtk.VBox):

@@ -124,6 +124,23 @@ def check_wrapper_changed(library, parent, songs):
                 break
         win.destroy()
 
+    _inform_library_of_changed(library, songs)
+
+
+def background_check_wrapper_changed(library, songs):
+    need_write = [s for s in songs if s._needs_write]
+
+    if need_write:
+        for song in need_write:
+            try:
+                song._song.write()
+            except AudioFileError as e:
+                print_d("Couldn't save song %s (%s)" % (song("~filename"), e))
+
+    _inform_library_of_changed(library, songs)
+
+
+def _inform_library_of_changed(library, songs):
     changed = []
     for song in songs:
         if song._was_updated():

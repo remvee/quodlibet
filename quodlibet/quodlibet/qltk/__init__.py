@@ -554,14 +554,14 @@ class ThemeOverrider(object):
 
 from .msg import Message, ErrorMessage, WarningMessage
 from .x import Align, Button, ToggleButton, Notebook, SeparatorMenuItem, \
-    WebImage, MenuItem, Frame, EntryCompletion
+    WebImage, MenuItem, Frame, EntryCompletion, ConfigLabel
 from .icons import Icons
 from .window import Window, UniqueWindow, Dialog
 from .paned import ConfigRPaned, ConfigRHPaned
 
 Message, ErrorMessage, WarningMessage
 Align, Button, ToggleButton, Notebook, SeparatorMenuItem, \
-    WebImage, MenuItem, Frame, EntryCompletion
+    WebImage, MenuItem, Frame, EntryCompletion, ConfigLabel
 Icons
 Window, UniqueWindow, Dialog
 ConfigRPaned, ConfigRHPaned

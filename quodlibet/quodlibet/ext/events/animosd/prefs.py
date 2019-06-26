@@ -17,16 +17,7 @@ from quodlibet import qltk
 from quodlibet.util import connect_obj
 from quodlibet.formats import DUMMY_SONG
 from quodlibet.qltk.textedit import PatternEdit
-from quodlibet.qltk import Icons
-
-
-class ConfigLabel(Gtk.Label):
-    """Customised Label for configuration, tied to a widget"""
-
-    def __init__(self, text, widget):
-        super(Gtk.Label, self).__init__(label=text, use_underline=True)
-        self.set_mnemonic_widget(widget)
-        self.set_alignment(0.0, 0.5)
+from quodlibet.qltk import Icons, ConfigLabel
 
 
 class AnimOsdPrefs(Gtk.VBox):
